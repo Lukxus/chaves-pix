@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-chaves-pix-table
+      author: lukxus
+      changes:
+        - createTable:
+            tableName: chaves_pix
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tipo_chave
+                  type: VARCHAR(9)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valor_chave
+                  type: VARCHAR(77)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: tipo_conta
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: numero_agencia
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: numero_conta
+                  type: VARCHAR(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nome_correntista
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sobrenome_correntista
+                  type: VARCHAR(45)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: data_hora_inclusao
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data_hora_inativacao
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: true
+        - addUniqueConstraint:
+            columnNames: valor_chave
+            constraintName: uq_valor_chave
+            tableName: chaves_pix
