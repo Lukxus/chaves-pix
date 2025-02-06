@@ -30,6 +30,12 @@ public class ChavePixController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ChavePixResponse> consultarChavePorId(@PathVariable UUID id) {
+        ChavePixResponse response = chavePixService.consultarChavePorId(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ChavePixResponse> atualizarChavePix(@PathVariable UUID id, @RequestBody ChavePixRequest request) {
         ChavePixResponse response = chavePixService.atualizarChavePix(id, request);
@@ -40,12 +46,6 @@ public class ChavePixController {
     public ResponseEntity<Void> inativarChavePix(@PathVariable UUID id) {
         chavePixService.inativarChavePix(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ChavePixResponse> consultarChavePorId(@PathVariable UUID id) {
-        ChavePixResponse response = chavePixService.consultarChavePorId(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

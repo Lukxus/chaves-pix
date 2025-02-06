@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 public class ChavePixRequest {
 
-    @jakarta.validation.constraints.NotNull(message = "O tipo da chave é obrigatório.")
+    @NotNull(message = "O tipo da chave é obrigatório.")
     private TipoChave tipoChave;
 
     @NotBlank(message = "O valor da chave é obrigatório.")

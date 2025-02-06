@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
 @Service
 public class ChavePixService {
 
@@ -26,7 +27,7 @@ public class ChavePixService {
         }
 
         ChavePix chavePix = ChavePixMapper.toEntity(request);
-        repository.save(chavePix);
+        chavePix = repository.save(chavePix);
 
         return ChavePixMapper.toResponse(chavePix);
     }

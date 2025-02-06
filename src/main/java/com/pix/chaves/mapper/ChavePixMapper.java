@@ -22,6 +22,16 @@ public class ChavePixMapper {
     }
 
     public static ChavePixResponse toResponse(ChavePix chavePix) {
-        return new ChavePixResponse(chavePix);
+        return ChavePixResponse.builder()
+                .id(chavePix.getId())
+                .tipoChave(chavePix.getTipoChave())
+                .valorChave(chavePix.getValorChave())
+                .tipoConta(chavePix.getTipoConta())
+                .numeroAgencia(chavePix.getNumeroAgencia())
+                .numeroConta(chavePix.getNumeroConta())
+                .nomeCorrentista(chavePix.getNomeCorrentista())
+                .sobrenomeCorrentista(chavePix.getSobrenomeCorrentista())
+                .dataHoraInclusao(LocalDateTime.now())
+                .build();
     }
 }
