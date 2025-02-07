@@ -3,9 +3,11 @@ package com.pix.chaves.mapper;
 import com.pix.chaves.domain.dto.ChavePixRequest;
 import com.pix.chaves.domain.dto.ChavePixResponse;
 import com.pix.chaves.domain.model.ChavePix;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+@Component
 public class ChavePixMapper {
 
     public static ChavePix toEntity(ChavePixRequest request) {
