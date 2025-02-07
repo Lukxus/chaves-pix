@@ -1,7 +1,7 @@
 package com.pix.chaves.rest;
 
-import com.pix.chaves.domain.dto.ChavePixRequest;
-import com.pix.chaves.domain.dto.ChavePixResponse;
+import com.pix.chaves.rest.dto.ChavePixRequest;
+import com.pix.chaves.rest.dto.ChavePixResponse;
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.services.ChavePixService;
 import jakarta.annotation.Resource;

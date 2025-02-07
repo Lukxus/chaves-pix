@@ -1,7 +1,7 @@
 package com.pix.chaves.mapper;
 
-import com.pix.chaves.domain.dto.ChavePixRequest;
-import com.pix.chaves.domain.dto.ChavePixResponse;
+import com.pix.chaves.rest.dto.ChavePixRequest;
+import com.pix.chaves.rest.dto.ChavePixResponse;
 import com.pix.chaves.domain.model.ChavePix;
 import org.springframework.stereotype.Component;
 

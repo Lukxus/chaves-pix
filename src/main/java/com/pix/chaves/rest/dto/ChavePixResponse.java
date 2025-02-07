@@ -1,4 +1,4 @@
-package com.pix.chaves.domain.dto;
+package com.pix.chaves.rest.dto;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.enums.TipoConta;

@@ -1,7 +1,7 @@
 package com.pix.chaves.services;
 
-import com.pix.chaves.domain.dto.ChavePixRequest;
-import com.pix.chaves.domain.dto.ChavePixResponse;
+import com.pix.chaves.rest.dto.ChavePixRequest;
+import com.pix.chaves.rest.dto.ChavePixResponse;
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.exception.BusinessException;
@@ -183,5 +183,9 @@ public class ChavePixService {
 
         log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
         return chaves;
+    }
+
+    public boolean chaveJaExiste(String valorChave) {
+        return repository.findByValorChave(valorChave).isPresent();
     }
 }
