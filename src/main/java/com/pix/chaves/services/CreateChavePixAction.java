@@ -7,6 +7,7 @@ import com.pix.chaves.exception.LogMessages;
 import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
+import com.pix.chaves.utils.validation.ChavePixValidatorFactory;
 import com.pix.chaves.utils.validation.valid.ChavePixValidator;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;

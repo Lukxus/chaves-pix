@@ -1,5 +1,6 @@
 package com.pix.chaves.rest.controllers;
 
+import com.pix.chaves.rest.dto.response.ChavePixResponse;
 import com.pix.chaves.services.ChavePixService;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,9 @@ public class ChavePixRemoveController {
     private ChavePixService chavePixService;
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> inativarChavePix(@PathVariable UUID id) {
-        chavePixService.inativarChavePix(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<ChavePixResponse> inativarChavePix(@PathVariable UUID id) {
+        ChavePixResponse chavePixResponse = chavePixService.inativarChavePix(id);
+        return new ResponseEntity<>(chavePixResponse, HttpStatus.OK);
     }
 
 }

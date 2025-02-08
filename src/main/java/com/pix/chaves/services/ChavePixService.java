@@ -35,8 +35,8 @@ public class ChavePixService {
         return ChavePixMapper.toResponse(updateChavePixAction.atualizarChavePix(request));
     }
 
-    public void inativarChavePix(UUID id) {
-        ChavePixMapper.toRemoveResponse(removeChavePixAction.removeChavePix(id));
+    public ChavePixResponse inativarChavePix(UUID id) {
+        return ChavePixMapper.toResponse(removeChavePixAction.removeChavePix(id));
     }
 
     public ChavePixResponse consultarChavePorId(UUID id) {

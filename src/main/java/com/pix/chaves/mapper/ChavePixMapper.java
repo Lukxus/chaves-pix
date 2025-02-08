@@ -1,9 +1,8 @@
 package com.pix.chaves.mapper;
 
+import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
 import com.pix.chaves.rest.dto.response.ChavePixResponse;
-import com.pix.chaves.domain.model.ChavePix;
-import com.pix.chaves.rest.dto.response.RemoveChavePixResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -26,20 +25,6 @@ public class ChavePixMapper {
 
     public static ChavePixResponse toResponse(ChavePix chavePix) {
         return ChavePixResponse.builder()
-                .id(chavePix.getId())
-                .tipoChave(chavePix.getTipoChave())
-                .valorChave(chavePix.getValorChave())
-                .tipoConta(chavePix.getTipoConta())
-                .numeroAgencia(chavePix.getNumeroAgencia())
-                .numeroConta(chavePix.getNumeroConta())
-                .nomeCorrentista(chavePix.getNomeCorrentista())
-                .sobrenomeCorrentista(chavePix.getSobrenomeCorrentista())
-                .dataHoraInclusao(chavePix.getDataHoraInclusao())
-                .build();
-    }
-
-    public static RemoveChavePixResponse toRemoveResponse(ChavePix chavePix) {
-        return RemoveChavePixResponse.builder()
                 .id(chavePix.getId())
                 .tipoChave(chavePix.getTipoChave())
                 .valorChave(chavePix.getValorChave())

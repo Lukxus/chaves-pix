@@ -27,5 +27,6 @@ public class ChavePixResponse {
     private String nomeCorrentista;
     private String sobrenomeCorrentista;
     private LocalDateTime dataHoraInclusao;
+    private LocalDateTime dataHoraExclusao;
 
 }
