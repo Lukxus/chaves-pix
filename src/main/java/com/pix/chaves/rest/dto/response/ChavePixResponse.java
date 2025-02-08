@@ -1,8 +1,7 @@
-package com.pix.chaves.rest.dto;
+package com.pix.chaves.rest.dto.response;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.enums.TipoConta;
-import com.pix.chaves.domain.model.ChavePix;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,6 +27,5 @@ public class ChavePixResponse {
     private String nomeCorrentista;
     private String sobrenomeCorrentista;
     private LocalDateTime dataHoraInclusao;
-    private LocalDateTime dataHoraInativacao;
 
 }

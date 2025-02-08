@@ -28,4 +28,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleValidationException(ValidationException ex) {
         return ResponseEntity.unprocessableEntity().body(ex.getMessage());
     }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<String> handleBusinessException(BusinessException ex) {
+        return ResponseEntity.unprocessableEntity().body(ex.getMessage());
+    }
 }

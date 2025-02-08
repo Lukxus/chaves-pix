@@ -1,4 +1,4 @@
-package com.pix.chaves.rest.dto;
+package com.pix.chaves.rest.dto.request;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.enums.TipoConta;
@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChavePixRequest {
+public class CreateChavePixRequest {
 
     @NotNull(message = "O tipo da chave é obrigatório.")
     private TipoChave tipoChave;
