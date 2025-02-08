@@ -1,14 +1,15 @@
 package com.pix.chaves.services;
 
-import com.pix.chaves.rest.dto.ChavePixRequest;
-import com.pix.chaves.rest.dto.ChavePixResponse;
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.exception.BusinessException;
 import com.pix.chaves.exception.ErrorMessages;
+import com.pix.chaves.exception.LogMessages;
 import com.pix.chaves.exception.ResourceNotFoundException;
 import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
+import com.pix.chaves.rest.dto.ChavePixRequest;
+import com.pix.chaves.rest.dto.ChavePixResponse;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -33,32 +34,32 @@ public class ChavePixService {
 
     @Transactional
     public ChavePixResponse criarChavePix(ChavePixRequest request) {
-        log.info("Iniciando criação da chave PIX: {}", request.getValorChave());
+        log.info(LogMessages.INICIANDO_CRIACAO_CHAVE_PIX, request.getValorChave());
 
         if (repository.existsByValorChave(request.getValorChave())) {
-            log.warn("Tentativa de criação de chave PIX já cadastrada: {}", request.getValorChave());
+            log.warn(LogMessages.CHAVE_PIX_JA_CADASTRADA, request.getValorChave());
             throw new BusinessException(ErrorMessages.CHAVE_PIX_JA_CADASTRADA);
         }
 
         ChavePix chavePix = ChavePixMapper.toEntity(request);
         chavePix = repository.save(chavePix);
 
-        log.info("Chave PIX criada com sucesso: ID {}", chavePix.getId());
+        log.info(LogMessages.CHAVE_PIX_CRIADA_COM_SUCESSO, chavePix.getId());
         return ChavePixMapper.toResponse(chavePix);
     }
 
     @Transactional
     public ChavePixResponse atualizarChavePix(UUID id, ChavePixRequest request) {
-        log.info("Iniciando atualização da chave PIX: ID {}", id);
+        log.info(LogMessages.INICIANDO_ATUALIZACAO_CHAVE_PIX, id);
 
         ChavePix chavePix = repository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Chave PIX não encontrada para atualização: ID {}", id);
+                    log.warn(LogMessages.CHAVE_PIX_NAO_ENCONTRADA, id);
                     return new ResourceNotFoundException(ErrorMessages.CHAVE_PIX_NAO_ENCONTRADA);
                 });
 
         if (chavePix.getDataHoraInativacao() != null) {
-            log.warn("Tentativa de alteração de chave PIX inativada: ID {}", id);
+            log.warn(LogMessages.CHAVE_PIX_INATIVADA, id);
             throw new BusinessException(ErrorMessages.CHAVE_PIX_INATIVADA_NAO_PODE_SER_ALTERADA);
         }
 
@@ -69,119 +70,114 @@ public class ChavePixService {
         chavePix.setSobrenomeCorrentista(request.getSobrenomeCorrentista());
 
         repository.save(chavePix);
-        log.info("Chave PIX atualizada com sucesso: ID {}", id);
+        log.info(LogMessages.CHAVE_PIX_ALTERADA_COM_SUCESSO, id);
         return ChavePixMapper.toResponse(chavePix);
     }
 
     @Transactional
     public void inativarChavePix(UUID id) {
-        log.info("Iniciando inativação da chave PIX: ID {}", id);
+        log.info(LogMessages.INICIANDO_INATIVACAO_CHAVE_PIX, id);
 
         ChavePix chavePix = repository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Tentativa de inativação de chave PIX não encontrada: ID {}", id);
+                    log.warn(LogMessages.CHAVE_PIX_NAO_ENCONTRADA_INATIVACAO, id);
                     return new ResourceNotFoundException(ErrorMessages.CHAVE_PIX_NAO_ENCONTRADA);
                 });
 
         if (chavePix.getDataHoraInativacao() != null) {
-            log.warn("Chave PIX já inativada: ID {}", id);
+            log.warn(LogMessages.CHAVE_PIX_JA_INATIVADA, id);
             throw new BusinessException(ErrorMessages.CHAVE_PIX_JA_INATIVADA);
         }
 
         chavePix.setDataHoraInativacao(LocalDateTime.now());
         repository.save(chavePix);
-        log.info("Chave PIX inativada com sucesso: ID {}", id);
+        log.info(LogMessages.CHAVE_PIX_INATIVADA_COM_SUCESSO, id);
     }
 
     @Transactional
     public ChavePixResponse consultarChavePorId(UUID id) {
-        log.info("Consultando chave PIX: ID {}", id);
+        log.info(LogMessages.CONSULTANDO_CHAVE_PIX, id);
 
         ChavePix chavePix = repository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Chave PIX não encontrada: ID {}", id);
+                    log.warn(LogMessages.CHAVE_PIX_NAO_ENCONTRADA, id);
                     return new ResourceNotFoundException(ErrorMessages.CHAVE_PIX_NAO_ENCONTRADA);
                 });
 
-        log.info("Chave PIX encontrada: ID {}", id);
+        log.info(LogMessages.CHAVE_PIX_ENCONTRADA, id);
         return ChavePixMapper.toResponse(chavePix);
     }
 
     @Transactional
     public List<ChavePixResponse> consultarChavePorAgenciaConta(String conta, String agencia) {
-        log.info("Consultando chaves PIX para agência {} e conta {}", agencia, conta);
+        log.info(LogMessages.CONSULTANDO_CHAVES_POR_AGENCIA_CONTA, agencia, conta);
 
         List<ChavePixResponse> chaves = repository.findByNumeroAgenciaAndNumeroConta(agencia, conta)
                 .stream()
                 .map(ChavePixMapper::toResponse)
                 .collect(Collectors.toList());
 
-        log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
+        log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
         return chaves;
     }
 
     @Transactional
     public List<ChavePixResponse> consultarChavePorTipoChave(TipoChave tipoChave) {
-        log.info("Consultando chaves PIX do tipo: {}", tipoChave);
+        log.info(LogMessages.CONSULTANDO_CHAVES_POR_TIPO, tipoChave);
 
         List<ChavePixResponse> chaves = repository.findByTipoChave(tipoChave)
                 .stream()
                 .map(ChavePixMapper::toResponse)
                 .collect(Collectors.toList());
 
-        log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
+        log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
         return chaves;
     }
 
     @Transactional
     public List<ChavePixResponse> consultarChavePorNomeCorrentista(String nomeCorrentista, String sobrenomeCorrentista) {
-        log.info("Iniciando consulta de chaves PIX para: {} {}", nomeCorrentista, sobrenomeCorrentista);
-
-//        if (StringUtils.isBlank(nomeCorrentista) && StringUtils.isBlank(sobrenomeCorrentista)) {
-//            log.warn("Consulta não realizada. Nome e sobrenome do correntista não podem estar vazios.");
-//            return Collections.emptyList();
-//        }
+        log.info(LogMessages.CONSULTANDO_CHAVES_POR_NOME, nomeCorrentista, sobrenomeCorrentista);
 
         try {
-            List<ChavePixResponse> chaves = Optional.ofNullable(repository.
-                            findByNomeCorrentistaContainingIgnoreCaseAndSobrenomeCorrentistaContainingIgnoreCase
-                                    (nomeCorrentista, sobrenomeCorrentista))
+            List<ChavePixResponse> chaves = Optional.ofNullable(repository
+                            .findByNomeCorrentistaContainingIgnoreCaseAndSobrenomeCorrentistaContainingIgnoreCase(
+                                    nomeCorrentista, sobrenomeCorrentista))
                     .orElse(Collections.emptyList())
                     .stream()
                     .map(ChavePixMapper::toResponse)
                     .collect(Collectors.toList());
 
-            log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
+            log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
             return chaves;
         } catch (Exception e) {
-            log.error("Erro ao consultar chaves PIX para: {} {}. Erro: {}", nomeCorrentista, sobrenomeCorrentista, e.getMessage(), e);
-            throw new RuntimeException("Erro ao consultar chaves PIX. Tente novamente mais tarde.");
+            log.error(LogMessages.ERRO_CONSULTA_CHAVES_POR_NOME, nomeCorrentista, sobrenomeCorrentista, e.getMessage(), e);
+            throw new RuntimeException(ErrorMessages.ERRO_CONSULTA_CHAVES);
         }
     }
 
     @Transactional
     public List<ChavePixResponse> consultarChavePorDataInclusao(LocalDateTime dataInclusaoInicio, LocalDateTime dataInclusaoFinal) {
-        log.info("Consultando chaves PIX por período de inclusão: {} até {}", dataInclusaoInicio, dataInclusaoFinal);
+        log.info(LogMessages.CONSULTANDO_CHAVES_POR_PERIODO_INCLUSAO, dataInclusaoInicio, dataInclusaoFinal);
 
         List<ChavePixResponse> chaves = repository.findByDataHoraInclusaoBetween(dataInclusaoInicio, dataInclusaoFinal)
                 .stream()
                 .map(ChavePixMapper::toResponse)
                 .collect(Collectors.toList());
 
-        log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
+        log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
         return chaves;
     }
 
     @Transactional
     public List<ChavePixResponse> consultarChavePorDataExclusao(LocalDateTime dataExclusaoInicio, LocalDateTime dataExclusaoFinal) {
-        log.info("Consultando chaves PIX por período de exclusão: {} até {}", dataExclusaoInicio, dataExclusaoFinal);
+        log.info(LogMessages.CONSULTANDO_CHAVES_POR_PERIODO_EXCLUSAO, dataExclusaoInicio, dataExclusaoFinal);
 
         List<ChavePixResponse> chaves = repository.findByDataHoraInativacaoBetween(dataExclusaoInicio, dataExclusaoFinal)
                 .stream()
                 .map(ChavePixMapper::toResponse)
                 .collect(Collectors.toList());
 
-        log.info("Consulta concluída. Total de chaves encontradas: {}", chaves.size());
+        log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
         return chaves;
     }
 

@@ -5,4 +5,5 @@ public class ErrorMessages {
     public static final String CHAVE_PIX_NAO_ENCONTRADA = "Chave PIX não encontrada.";
     public static final String CHAVE_PIX_JA_INATIVADA = "Chave PIX já inativada.";
     public static final String CHAVE_PIX_INATIVADA_NAO_PODE_SER_ALTERADA = "Não é possível alterar uma chave inativada.";
+    public static final String ERRO_CONSULTA_CHAVES = "Erro ao consultar chaves PIX. Erro: {}";
 }
