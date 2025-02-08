@@ -1,6 +1,6 @@
-package com.pix.chaves.rest.validation.valid;
+package com.pix.chaves.utils.validation.valid;
 
-import com.pix.chaves.rest.validation.validators.NumeroContaValidator;
+import com.pix.chaves.utils.validation.validators.NumeroContaValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

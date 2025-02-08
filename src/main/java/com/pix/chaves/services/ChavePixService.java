@@ -10,6 +10,7 @@ import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
 import com.pix.chaves.rest.dto.ChavePixRequest;
 import com.pix.chaves.rest.dto.ChavePixResponse;
+import com.pix.chaves.utils.validation.valid.ChavePixValidator;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,9 @@ public class ChavePixService {
     @Transactional
     public ChavePixResponse criarChavePix(ChavePixRequest request) {
         log.info(LogMessages.INICIANDO_CRIACAO_CHAVE_PIX, request.getValorChave());
+
+        ChavePixValidator validator = ChavePixValidatorFactory.getValidator(request.getTipoChave());
+        validator.validate(request.getValorChave());
 
         if (repository.existsByValorChave(request.getValorChave())) {
             log.warn(LogMessages.CHAVE_PIX_JA_CADASTRADA, request.getValorChave());

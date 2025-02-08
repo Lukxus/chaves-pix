@@ -2,9 +2,8 @@ package com.pix.chaves.rest.dto;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.enums.TipoConta;
-import com.pix.chaves.rest.validation.valid.NumeroAgencia;
-import com.pix.chaves.rest.validation.valid.NumeroConta;
-import com.pix.chaves.rest.validation.valid.ValidarChavePix;
+import com.pix.chaves.utils.validation.valid.NumeroAgencia;
+import com.pix.chaves.utils.validation.valid.NumeroConta;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -24,9 +23,7 @@ public class ChavePixRequest {
 
     @NotBlank(message = "O valor da chave é obrigatório.")
     @Size(max = 77, message = "O valor da chave deve ter no máximo 77 caracteres.")
-    @ValidarChavePix
     private String valorChave;
-
 
     @NotNull(message = "O tipo de conta é obrigatório.")
     private TipoConta tipoConta;

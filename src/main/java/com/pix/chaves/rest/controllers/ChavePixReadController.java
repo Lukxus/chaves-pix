@@ -1,4 +1,4 @@
-package com.pix.chaves.rest;
+package com.pix.chaves.rest.controllers;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.rest.dto.ChavePixResponse;
