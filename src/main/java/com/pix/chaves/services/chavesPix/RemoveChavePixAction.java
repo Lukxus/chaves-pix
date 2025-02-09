@@ -1,12 +1,10 @@
-package com.pix.chaves.services;
+package com.pix.chaves.services.chavesPix;
 
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.exception.BusinessException;
 import com.pix.chaves.exception.ErrorMessages;
 import com.pix.chaves.exception.LogMessages;
-import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
-import com.pix.chaves.rest.dto.request.UpdateChavePixRequest;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

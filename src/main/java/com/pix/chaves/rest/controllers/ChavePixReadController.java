@@ -2,7 +2,7 @@ package com.pix.chaves.rest.controllers;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.rest.dto.response.ChavePixResponse;
-import com.pix.chaves.services.ChavePixService;
+import com.pix.chaves.services.chavesPix.ChavePixService;
 import jakarta.annotation.Resource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

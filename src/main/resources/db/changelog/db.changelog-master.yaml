@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/scripts/create_chave_pix.yaml
+  - include:
+      file: db/changelog/scripts/create_conta_cadastro.yaml

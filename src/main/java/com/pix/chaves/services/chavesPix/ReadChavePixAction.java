@@ -1,4 +1,4 @@
-package com.pix.chaves.services;
+package com.pix.chaves.services.chavesPix;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.model.ChavePix;
@@ -49,6 +49,14 @@ public class ReadChavePixAction {
                 .collect(Collectors.toList());
         log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.size());
         return chaves;
+    }
+
+    @Transactional(readOnly = true)
+    public long countByAgenciaConta(String agencia, String conta) {
+        log.info(LogMessages.CONTANDO_CHAVES_POR_AGENCIA_CONTA, agencia, conta);
+        long totalChaves = repository.countByNumeroAgenciaAndNumeroConta(agencia, conta);
+        log.info(LogMessages.TOTAL_CHAVES_POR_AGENCIA_CONTA, totalChaves);
+        return totalChaves;
     }
 
     @Transactional

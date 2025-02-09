@@ -1,7 +1,7 @@
 package com.pix.chaves.rest.controllers;
 
-import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
-import com.pix.chaves.services.chavesPix.ChavePixService;
+import com.pix.chaves.rest.dto.request.CreateContaRequest;
+import com.pix.chaves.services.contaCadastro.ContaCadastroService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/chaves-pix/create")
-public class ChavePixCreateController {
+@RequestMapping("/api/v1/conta/create")
+public class ContaCadastroCreateController {
 
     @Resource
-    private ChavePixService chavePixService;
+    private ContaCadastroService contaCadastroService;
 
     @PostMapping
-    public ResponseEntity<UUID> criarChavePix(@RequestBody @Valid CreateChavePixRequest request) {
-        UUID response = chavePixService.criarChavePix(request);
+    public ResponseEntity<UUID> criarConta(@RequestBody @Valid CreateContaRequest request) {
+        UUID response = contaCadastroService.createContaCadastro(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

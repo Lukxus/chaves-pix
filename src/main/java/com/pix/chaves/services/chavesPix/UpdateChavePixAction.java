@@ -1,4 +1,4 @@
-package com.pix.chaves.services;
+package com.pix.chaves.services.chavesPix;
 
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.exception.BusinessException;
