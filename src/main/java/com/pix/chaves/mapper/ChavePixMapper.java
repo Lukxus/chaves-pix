@@ -6,6 +6,7 @@ import com.pix.chaves.rest.dto.response.ChavePixResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class ChavePixMapper {
@@ -27,14 +28,24 @@ public class ChavePixMapper {
         return ChavePixResponse.builder()
                 .id(chavePix.getId())
                 .tipoChave(chavePix.getTipoChave())
-                .valorChave(chavePix.getValorChave())
+                .valorChave(safeString(chavePix.getValorChave()))
                 .tipoConta(chavePix.getTipoConta())
-                .numeroAgencia(chavePix.getNumeroAgencia())
-                .numeroConta(chavePix.getNumeroConta())
-                .nomeCorrentista(chavePix.getNomeCorrentista())
-                .sobrenomeCorrentista(chavePix.getSobrenomeCorrentista())
-                .dataHoraInclusao(chavePix.getDataHoraInclusao())
-                .dataHoraExclusao(chavePix.getDataHoraInativacao())
+                .numeroAgencia(safeString(chavePix.getNumeroAgencia()))
+                .numeroConta(safeString(chavePix.getNumeroConta()))
+                .nomeCorrentista(safeString(chavePix.getNomeCorrentista()))
+                .sobrenomeCorrentista(safeString(chavePix.getSobrenomeCorrentista()))
+                .dataHoraInclusao(safeDate(chavePix.getDataHoraInclusao()))
+                .dataHoraExclusao(safeDate(chavePix.getDataHoraInativacao()))
                 .build();
+    }
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
+    private static String safeDate(LocalDateTime date) {
+        return date == null ? "" : date.format(FORMATTER);
+    }
+
+    private static String safeString(String value) {
+        return value == null ? "" : value;
     }
 }

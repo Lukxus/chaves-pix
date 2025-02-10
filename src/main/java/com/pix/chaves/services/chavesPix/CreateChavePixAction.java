@@ -2,16 +2,13 @@ package com.pix.chaves.services.chavesPix;
 
 import com.pix.chaves.domain.enums.TipoContaCadastro;
 import com.pix.chaves.domain.model.ChavePix;
-import com.pix.chaves.domain.model.ContaCadastro;
 import com.pix.chaves.exception.BusinessException;
 import com.pix.chaves.exception.ErrorMessages;
 import com.pix.chaves.exception.LogMessages;
-import com.pix.chaves.exception.ResourceNotFoundException;
 import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
-import com.pix.chaves.repository.ContaCadastroRepository;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
-import com.pix.chaves.services.contaCadastro.ReadContaCadastroAction;
+import com.pix.chaves.services.contaCadastro.ContaCadastroService;
 import com.pix.chaves.utils.validation.ChavePixValidatorFactory;
 import com.pix.chaves.utils.validation.valid.ChavePixValidator;
 import jakarta.annotation.Resource;
@@ -33,10 +30,7 @@ public class CreateChavePixAction {
     private ReadChavePixAction readChavePixAction;
 
     @Resource
-    private ContaCadastroRepository contaCadastroRepository;
-
-    @Resource
-    private ReadContaCadastroAction readContaCadastroAction;
+    private ContaCadastroService contaCadastroService;
 
     @Transactional
     public ChavePix createChavePix(CreateChavePixRequest request) {
@@ -50,12 +44,12 @@ public class CreateChavePixAction {
             throw new BusinessException(ErrorMessages.CHAVE_PIX_JA_CADASTRADA);
         }
 
-        ContaCadastro contaCadastro = readContaCadastroAction.findByAgenciaConta(
+        TipoContaCadastro tipoContaCadastro = contaCadastroService.obterTipoConta(
                 request.getNumeroAgencia(),
                 request.getNumeroConta()
         );
 
-        validarNumeroChaves(request.getNumeroAgencia(), request.getNumeroConta(), contaCadastro.getTipoContaCadastro());
+        validarNumeroChaves(request.getNumeroAgencia(), request.getNumeroConta(), tipoContaCadastro);
 
         ChavePix chavePix = ChavePixMapper.toEntity(request);
         chavePix = chavePixRepository.save(chavePix);

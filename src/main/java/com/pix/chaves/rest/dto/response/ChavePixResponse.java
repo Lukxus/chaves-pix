@@ -26,7 +26,7 @@ public class ChavePixResponse {
     private String numeroConta;
     private String nomeCorrentista;
     private String sobrenomeCorrentista;
-    private LocalDateTime dataHoraInclusao;
-    private LocalDateTime dataHoraExclusao;
+    private String dataHoraInclusao;
+    private String dataHoraExclusao;
 
 }

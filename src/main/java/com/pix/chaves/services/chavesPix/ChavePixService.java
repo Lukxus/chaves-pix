@@ -2,10 +2,13 @@ package com.pix.chaves.services.chavesPix;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.mapper.ChavePixMapper;
+import com.pix.chaves.rest.dto.request.ChavePixFilter;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
 import com.pix.chaves.rest.dto.request.UpdateChavePixRequest;
 import com.pix.chaves.rest.dto.response.ChavePixResponse;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -43,23 +46,7 @@ public class ChavePixService {
         return ChavePixMapper.toResponse(readChavePixAction.findById(id));
     }
 
-    public List<ChavePixResponse> consultarChavePorAgenciaConta(String conta, String agencia) {
-        return readChavePixAction.findByAgenciaConta(conta, agencia);
-    }
-
-    public List<ChavePixResponse> consultarChavePorTipoChave(TipoChave tipoChave) {
-        return readChavePixAction.findByTipoChave(tipoChave);
-    }
-
-    public List<ChavePixResponse> consultarChavePorNomeCorrentista(String nomeCorrentista, String sobrenomeCorrentista) {
-        return readChavePixAction.findByNomeCorrentista(nomeCorrentista, sobrenomeCorrentista);
-    }
-
-    public List<ChavePixResponse> consultarChavePorDataInclusao(LocalDateTime dataInclusaoInicio, LocalDateTime dataInclusaoFinal) {
-        return readChavePixAction.findByDataInclusao(dataInclusaoInicio, dataInclusaoFinal);
-    }
-
-    public List<ChavePixResponse> consultarChavePorDataExclusao(LocalDateTime dataExclusaoInicio, LocalDateTime dataExclusaoFinal) {
-        return readChavePixAction.findByDataExclusao(dataExclusaoInicio, dataExclusaoFinal);
+    public Page<ChavePixResponse> consultarChavePaginada(ChavePixFilter chavePixFilter, Pageable pageable) {
+        return readChavePixAction.getChavesPaginada(chavePixFilter, pageable);
     }
 }

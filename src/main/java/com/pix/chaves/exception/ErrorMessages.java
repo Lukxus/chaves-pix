@@ -5,7 +5,6 @@ public class ErrorMessages {
     public static final String CHAVE_PIX_NAO_ENCONTRADA = "Chave PIX não encontrada.";
     public static final String CHAVE_PIX_JA_INATIVADA = "Chave PIX já inativada.";
     public static final String CHAVE_PIX_INATIVADA_NAO_PODE_SER_ALTERADA = "Não é possível alterar uma chave inativada.";
-    public static final String ERRO_CONSULTA_CHAVES = "Erro ao consultar chaves PIX. Erro: {}";
     public static final String TIPO_CHAVE_NAO_SUPORTADO = "Tipo de chave não suportado: ";
     public static final String CHAVE_ALEATORIA_ALFANUMERICOS = "Chave Aleatória deve conter apenas caracteres alfanuméricos.";
     public static final String CHAVE_ALEATORIA_VAZIA_NULA = "Chave Aleatória não pode ser vazia ou nula.";
@@ -31,8 +30,9 @@ public class ErrorMessages {
     public static final String NUMERO_CONTA_VAZIO_NULO = "O número da conta não pode ser nulo ou vazio.";
     public static final String NUMERO_CONTA_NUMERO_DIGITOS = "O número da conta deve ter de 1 a 8 dígitos numéricos.";
 
-    public static final String CONTA_JA_CADASTRADA = "Conta e Agencia ja cadastrados.";
-    public static final String CONTA_NAO_CADASTRADA = "Conta não cadastrada. Agencia: {} ; Conta: {}.";
     public static final String LIMITE_CHAVES_PF = "Limite de 5 chaves por conta atingido para pessoa física.";
     public static final String LIMITE_CHAVES_PJ = "Limite de 20 chaves por conta atingido para pessoa jurídica.";
+
+    public static final String FILTRO_DATA_INCLUSAO_E_DATA_INATIVACAO = "Não é permitido filtrar por data de inclusão e data de inativação ao mesmo tempo.";
+    public static final String BUSCA_DE_CHAVE_VAZIA = "Nenhuma chave foi encontrada com os filtros fornecidos.";
 }
