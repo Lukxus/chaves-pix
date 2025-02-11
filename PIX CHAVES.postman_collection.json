@@ -1,0 +1,2767 @@
+{
+	"info": {
+		"_postman_id": "00da3bb0-35ad-4fc6-958f-1125765365ac",
+		"name": "PIX CHAVES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30609225"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Chaves",
+			"item": [
+				{
+					"name": "CONTA PF",
+					"item": [
+						{
+							"name": "5 Chaves",
+							"item": [
+								{
+									"name": "Cadastrar Chave CNPJ",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"77312998000194\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\", //1111 + 12345678 = 12346789 IMPAR = PF\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave Celular",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982278884\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave EMAIL",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"EMAIL\",\r\n  \"valorChave\": \"luiz.saraiva@itau.com.br\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave CPF",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"11136720057\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoaBNaa1zJhvNL9\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "CHAVE 6",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aaDTaaDVaaasTeaNyaAvsaaBNaa1zJh\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CONTA PJ",
+					"item": [
+						{
+							"name": "20 Chaves",
+							"item": [
+								{
+									"name": "Cadastrar Chave CNPJ",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"99586200000135\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave Celular",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982258894\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave EMAIL",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"EMAIL\",\r\n  \"valorChave\": \"luiz.tassinari@itau.com.br\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave CPF",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"15567037082\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 1",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL1\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 2",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL2\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 3",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL3\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 4",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL4\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 5",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL55\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 6",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL6\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 7",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL7\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 8",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL8\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 9",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL9\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 10",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL10\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 11",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL11\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 12",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL12\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 13",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL13\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 14",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL14\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 15",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL15\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 16",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL16\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "CHAVE 21",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNL17\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FALHA",
+					"item": [
+						{
+							"name": "Cadastrar Chave CNPJ ERRADO",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"0000000000000a\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"9999\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave CPF ERRO",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"44287700032\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave CELULAR ERRO",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"55(11)982258884\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave EMAIL ERRO",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"EMAIL\",\r\n  \"valorChave\": \"luiz.saraiva#itau.com\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave ALEATORIA ERRO",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa??\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave ERRO NA CONTA",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"11136720057\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"123456789999999#\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave ERRO NA AGENCIA",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"11136720057\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"12345555555\",\r\n  \"numeroConta\": \"12345678\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Listar Chaves",
+			"item": [
+				{
+					"name": "SUCESSO",
+					"item": [
+						{
+							"name": "Buscar chave por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/5206b4d8-d4b9-43f6-9906-8b577e9d32bc",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"5206b4d8-d4b9-43f6-9906-8b577e9d32bc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por multiplos filtros PAGINADA",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read?dataInclusao=2025-02-11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read"
+									],
+									"query": [
+										{
+											"key": "tipoChave",
+											"value": "EMAIL",
+											"disabled": true
+										},
+										{
+											"key": "valorChavePix",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "tipoConta",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "numeroAgencia",
+											"value": "1111",
+											"disabled": true
+										},
+										{
+											"key": "numeroConta",
+											"value": "12345678",
+											"disabled": true
+										},
+										{
+											"key": "nomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "sobrenomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "dataInclusao",
+											"value": "2025-02-11"
+										},
+										{
+											"key": "dataInativacao",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FALHA",
+					"item": [
+						{
+							"name": "ERRO - INCLUSAO/INATIVAÇÂO",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read?dataInclusao=2025-11-02&dataInativacao=2025-11-02",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read"
+									],
+									"query": [
+										{
+											"key": "tipoChave",
+											"value": "CELULAR",
+											"disabled": true
+										},
+										{
+											"key": "valorChavePix",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "tipoConta",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "numeroAgencia",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "numeroConta",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "nomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "sobrenomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "dataInclusao",
+											"value": "2025-11-02"
+										},
+										{
+											"key": "dataInativacao",
+											"value": "2025-11-02"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Editar Chave",
+			"item": [
+				{
+					"name": "SUCESSO",
+					"item": [
+						{
+							"name": "Cadastrar Chave Celular Copy",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982275484\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345476\",\r\n  \"nomeCorrentista\": \"Afonso\",\r\n  \"sobrenomeCorrentista\": \"Editor\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/e36e64cd-6310-4d6a-9d27-2566d9649420",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"e36e64cd-6310-4d6a-9d27-2566d9649420"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edição Chave",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"e36e64cd-6310-4d6a-9d27-2566d9649420\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"2222\", //alterando agencia\r\n  \"numeroConta\": \"12345476\",\r\n  \"nomeCorrentista\": \"Afonso\",\r\n  \"sobrenomeCorrentista\": \"Editado\" //Alterado\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/e36e64cd-6310-4d6a-9d27-2566d9649420",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"e36e64cd-6310-4d6a-9d27-2566d9649420"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar 6 chave para Agencia e Conta PF",
+					"item": [
+						{
+							"name": "Cadastra 5 CHAVES",
+							"item": [
+								{
+									"name": "Cadastrar Chave CNPJ Copy",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"33365100000170\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\", //1111 + 12345670 = 12346781 IMPAR = PF\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave Celular Copy",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982258884\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave EMAIL Copy",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"EMAIL\",\r\n  \"valorChave\": \"luiz.fulano@itau.com.br\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave CPF Copy",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"02330057067\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTyyyyyaAvsazTU8uoaBNaa1zJL9\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "Agencia: 1111  \nConta: 12345670"
+						},
+						{
+							"name": "Cadastrar Chave CNPJ",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"19130468000129\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345677\", //1111 + 12345678 = 12346789 IMPAR = PF\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edição Chave",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"5fe7fb5a-1eba-4e9b-9718-ef35fdf86d5e\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"12345670\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar 21 chave para Agencia e Conta PJ",
+					"item": [
+						{
+							"name": "20 Chaves Copy",
+							"item": [
+								{
+									"name": "Cadastrar Chave CNPJ",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CNPJ\",\r\n  \"valorChave\": \"24984805000185\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave Celular",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511977258894\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave EMAIL",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"EMAIL\",\r\n  \"valorChave\": \"luiz.tassinari@gmail.com.br\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave CPF",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"CPF\",\r\n  \"valorChave\": \"74323511043\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 1",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT1\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 2",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT2\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 3",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT3\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 4",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT4\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 5",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT5\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 6",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT6\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 7",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT7\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 8",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT8\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 9",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT9\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 10",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT10\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 11",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT11\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 12",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT12\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 13",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT13\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 14",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT14\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 15",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT15\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cadastrar Chave ALEATORIA 16",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT16\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Cadastrar Chave Aleatoria",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"aDTaaDVTeaNyaAvsazTU8uoBNaa1zJhvNT17\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"3333\",\r\n  \"numeroConta\": \"12345677\", \r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/3843097a-e253-4600-868a-4427fd011345",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"3843097a-e253-4600-868a-4427fd011345"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edição Chave Copy",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"3843097a-e253-4600-868a-4427fd011345\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1234\",\r\n  \"numeroConta\": \"32324344\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/3843097a-e253-4600-868a-4427fd011345",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"3843097a-e253-4600-868a-4427fd011345"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Remover chave",
+			"item": [
+				{
+					"name": "SUCESSO",
+					"item": [
+						{
+							"name": "Cadastrar Chave Aleatoria Inativada",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"1ab2b3b2uj3223132fdgfdgd\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"1111\",\r\n  \"numeroConta\": \"876563\",\r\n  \"nomeCorrentista\": \"Pedro\",\r\n  \"sobrenomeCorrentista\": \"Inativador\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/383dc5c4-a066-4a93-80e7-4c54cc589453",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"383dc5c4-a066-4a93-80e7-4c54cc589453"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove CHAVE CNPJ",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/remove/383dc5c4-a066-4a93-80e7-4c54cc589453",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"remove",
+										"383dc5c4-a066-4a93-80e7-4c54cc589453"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id Copy 2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/383dc5c4-a066-4a93-80e7-4c54cc589453",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"383dc5c4-a066-4a93-80e7-4c54cc589453"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por multiplos filtros PAGINADA Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read?tipoChave=ALEATORIA&numeroAgencia=1111&numeroConta=876563&dataInclusao=2025-02-11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read"
+									],
+									"query": [
+										{
+											"key": "tipoChave",
+											"value": "ALEATORIA"
+										},
+										{
+											"key": "valorChavePix",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "tipoConta",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "numeroAgencia",
+											"value": "1111"
+										},
+										{
+											"key": "numeroConta",
+											"value": "876563"
+										},
+										{
+											"key": "nomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "sobrenomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "dataInclusao",
+											"value": "2025-02-11"
+										},
+										{
+											"key": "dataInativacao",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ERRO - CHAVE NÂO ENCONTRADA",
+					"item": [
+						{
+							"name": "Cadastrar Chave Aleatoria Inativada",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"ALEATORIA\",\r\n  \"valorChave\": \"232343343gdfgdhdhfdfgdf\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"5555\",\r\n  \"numeroConta\": \"12345478\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"InativaErro\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por id Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read/51c428c9-e808-4832-86b1-82ce9f117b37",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read",
+										"51c428c9-e808-4832-86b1-82ce9f117b37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave Aleatoria Inativada Copy",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982275484\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"5555\",\r\n  \"numeroConta\": \"12345478\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove CHAVE CNPJ",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/remove/51c428c9-e808-4832-86b1-82ce9f117b37",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"remove",
+										"51c428c9-e808-4832-86b1-82ce9f117b37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Chave Aleatoria Inativada Copy 2",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoChave\": \"CELULAR\",\r\n  \"valorChave\": \"+5511982275484\",\r\n  \"tipoConta\": \"CORRENTE\",\r\n  \"numeroAgencia\": \"5555\",\r\n  \"numeroConta\": \"12345478\",\r\n  \"nomeCorrentista\": \"João\",\r\n  \"sobrenomeCorrentista\": \"Silva\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar chave por multiplos filtros PAGINADA Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/chaves-pix/read?numeroAgencia=5555&numeroConta=12345478&dataInclusao=2025-02-11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"chaves-pix",
+										"read"
+									],
+									"query": [
+										{
+											"key": "tipoChave",
+											"value": "EMAIL",
+											"disabled": true
+										},
+										{
+											"key": "valorChavePix",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "tipoConta",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "numeroAgencia",
+											"value": "5555"
+										},
+										{
+											"key": "numeroConta",
+											"value": "12345478"
+										},
+										{
+											"key": "nomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "sobrenomeCorrentista",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "dataInclusao",
+											"value": "2025-02-11"
+										},
+										{
+											"key": "dataInativacao",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
