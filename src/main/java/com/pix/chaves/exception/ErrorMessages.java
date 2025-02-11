@@ -26,7 +26,7 @@ public class ErrorMessages {
     public static final String CHAVE_EMAIL_NULO = "Email nao pode ser nulo";
     public static final String CHAVE_EMAIL_NUMERO_MAXIMO_CARACTERES = "Email deve ter no máximo 77 caracteres";
     public static final String NUMERO_AGENCIA_VAZIO_NULO = "O número da agência não pode ser nulo ou vazio.";
-    public static final String NUMERO_AGENCIA_NUMERO_DIGITOS = "O número da agência deve ter de 1 a 4 dígitos numéricos.";
+    public static final String NUMERO_AGENCIA_NUMERO_DIGITOS = "O número da agência deve ter 4 dígitos numéricos.";
     public static final String NUMERO_CONTA_VAZIO_NULO = "O número da conta não pode ser nulo ou vazio.";
     public static final String NUMERO_CONTA_NUMERO_DIGITOS = "O número da conta deve ter de 1 a 8 dígitos numéricos.";
 
