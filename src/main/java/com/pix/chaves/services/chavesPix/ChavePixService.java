@@ -6,6 +6,7 @@ import com.pix.chaves.rest.dto.request.ChavePixFilter;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
 import com.pix.chaves.rest.dto.request.UpdateChavePixRequest;
 import com.pix.chaves.rest.dto.response.ChavePixResponse;
+import com.pix.chaves.rest.dto.response.ChavePixUpdateResponse;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,8 +35,8 @@ public class ChavePixService {
         return createChavePixAction.createChavePix(request).getId();
     }
 
-    public ChavePixResponse atualizarChavePix(UpdateChavePixRequest request) {
-        return ChavePixMapper.toResponse(updateChavePixAction.atualizarChavePix(request));
+    public ChavePixUpdateResponse atualizarChavePix(UpdateChavePixRequest request) {
+        return ChavePixMapper.toUpdateResponse(updateChavePixAction.atualizarChavePix(request));
     }
 
     public ChavePixResponse inativarChavePix(UUID id) {

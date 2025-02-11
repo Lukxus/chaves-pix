@@ -5,7 +5,6 @@ import com.pix.chaves.exception.ErrorMessages;
 import com.pix.chaves.exception.FiltroInvalidoException;
 import com.pix.chaves.exception.LogMessages;
 import com.pix.chaves.exception.RecursoNaoEncontradoException;
-import com.pix.chaves.exception.ResourceNotFoundException;
 import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
 import com.pix.chaves.rest.dto.request.ChavePixFilter;
@@ -35,7 +34,7 @@ public class ReadChavePixAction {
         ChavePix chavePix = repository.findByIdAndDataHoraInativacaoIsNull(id)
                 .orElseThrow(() -> {
                     log.warn(LogMessages.CHAVE_PIX_NAO_ENCONTRADA, id);
-                    return new ResourceNotFoundException(ErrorMessages.CHAVE_PIX_NAO_ENCONTRADA);
+                    return new RecursoNaoEncontradoException(ErrorMessages.CHAVE_PIX_NAO_ENCONTRADA);
                 });
 
         log.info(LogMessages.CHAVE_PIX_ENCONTRADA, id);
@@ -73,6 +72,17 @@ public class ReadChavePixAction {
         log.info(LogMessages.CONSULTA_CONCLUIDA_TOTAL_CHAVES, chaves.getTotalElements());
 
         return chaves;
+    }
+
+    @Transactional(readOnly = true)
+    public Boolean existsByValorChave(String valorChave) {
+        log.info(LogMessages.VERIFICANDO_SE_CHAVE_COM_MESMO_VALOR_JA_EXISTE);
+
+        Boolean chaveJaCadastrada = repository.existsByValorChave(valorChave);
+
+        log.info(LogMessages.FIM_DA_VERIFICACAO_SE_CHAVE_COM_MESMO_VALOR_JA_EXISTE);
+
+        return chaveJaCadastrada;
     }
 
 }

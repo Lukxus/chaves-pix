@@ -1,16 +1,19 @@
-package com.pix.chaves.services;
+package com.pix.chaves.unit.services;
 
 import com.pix.chaves.domain.enums.TipoChave;
+import com.pix.chaves.domain.enums.TipoContaCadastro;
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.exception.BusinessException;
 import com.pix.chaves.exception.ChavePixValidationException;
 import com.pix.chaves.exception.ErrorMessages;
-import com.pix.chaves.factories.ChavePixRequestFactory;
+import com.pix.chaves.factories.ChavePixFactory;
 import com.pix.chaves.factories.TestConstants;
 import com.pix.chaves.mapper.ChavePixMapper;
 import com.pix.chaves.repository.ChavePixRepository;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
 import com.pix.chaves.services.chavesPix.CreateChavePixAction;
+import com.pix.chaves.services.chavesPix.ReadChavePixAction;
+import com.pix.chaves.services.contaCadastro.ContaCadastroService;
 import com.pix.chaves.utils.validation.ChavePixValidatorFactory;
 import com.pix.chaves.utils.validation.valid.ChavePixValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,16 +49,93 @@ class CreateChavePixActionTest {
     private ChavePixRepository repository;
 
     @Mock
+    private ContaCadastroService contaCadastroService;
+
+    @Mock
+    private ReadChavePixAction readChavePixAction;
+
+    @Mock
     private ChavePixValidator validator;
 
     @BeforeEach
     void setup() {
     }
 
+    // CONTA PF
+
+    @Test
+    void deveLancarExcecaoAoTentarCadastrarSextaChaveParaPessoaFisica() {
+        String numeroAgencia = TestConstants.AGENCY_NUMBER_EMAIL;
+        String numeroConta = TestConstants.ACCOUNT_NUMBER_EMAIL;
+
+        try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
+
+            when(readChavePixAction.countByAgenciaConta(
+                    numeroAgencia, numeroConta
+            )).thenReturn(5l);
+
+            BusinessException exception = assertThrows(
+                    BusinessException.class,
+                    () -> createChavePixAction.validarNumeroChaves(
+                            numeroAgencia, numeroConta, TipoContaCadastro.FISICA)
+            );
+
+            assertEquals(ErrorMessages.LIMITE_CHAVES_PF, exception.getMessage());
+            verify(repository, never()).save(Mockito.any());
+        }
+    }
+
+    // CONTA PJ
+    @Test
+    void deveLancarExcecaoAoTentarCadastrarSextaChaveParaPessoaJuridica() {
+        String numeroAgencia = TestConstants.AGENCY_NUMBER_EMAIL;
+        String numeroConta = TestConstants.ACCOUNT_NUMBER_EMAIL;
+        try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
+
+            when(readChavePixAction.countByAgenciaConta(
+                    numeroAgencia, numeroConta
+            )).thenReturn(20l);
+
+            BusinessException exception = assertThrows(
+                    BusinessException.class,
+                    () -> createChavePixAction.validarNumeroChaves(
+                            numeroAgencia, numeroConta, TipoContaCadastro.JURIDICA)
+            );
+
+            assertEquals(ErrorMessages.LIMITE_CHAVES_PJ, exception.getMessage());
+            verify(repository, never()).save(Mockito.any());
+        }
+    }
+
+    // Inativada
+
+    @Test
+    void deveLancarExcecaoAoTentarCadastrarChaveInativada() {
+        CreateChavePixRequest request = ChavePixFactory.createEmailRequest();
+        request.setTipoChave(TipoChave.EMAIL);
+        try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
+
+            validatorFactoryMock.when(() -> ChavePixValidatorFactory.getValidator(TipoChave.EMAIL))
+                    .thenReturn(validator);
+            doNothing().when(validator).validate(anyString());
+
+            when(readChavePixAction.existsByValorChave(
+                    request.getValorChave()
+            )).thenReturn(true);
+
+            BusinessException exception = assertThrows(
+                    BusinessException.class,
+                    () -> createChavePixAction.createChavePix(request)
+            );
+            assertEquals(ErrorMessages.CHAVE_PIX_JA_CADASTRADA, exception.getMessage());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
+        }
+    }
+
     //EMAIL
     @Test
     void deveCriarChavePixEMAILComDadosValidos() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createEmailRequest();
+        CreateChavePixRequest request = ChavePixFactory.createEmailRequest();
         request.setTipoChave(TipoChave.EMAIL);
 
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
@@ -65,7 +145,7 @@ class CreateChavePixActionTest {
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(false);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(false);
 
             ChavePix chavePix = new ChavePix();
             chavePix.setValorChave(request.getValorChave());
@@ -82,14 +162,14 @@ class CreateChavePixActionTest {
 
             assertNotNull(chaveCriada.getId());
             assertEquals(request.getValorChave(), chaveCriada.getValorChave());
-            verify(repository, times(1)).existsByValorChave(request.getValorChave());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
             verify(repository, times(1)).save(any(ChavePix.class));
         }
     }
 
     @Test
     void deveLancarExcecaoAoCriarChavePixEmailComValorChaveNulo() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createEmailRequest();
+        CreateChavePixRequest request = ChavePixFactory.createEmailRequest();
         request.setValorChave(null);
         request.setTipoChave(TipoChave.EMAIL);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -107,7 +187,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixEmailComValorChaveSemAt() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createEmailRequest();
+        CreateChavePixRequest request = ChavePixFactory.createEmailRequest();
         request.setValorChave("emaildominio.com");
         request.setTipoChave(TipoChave.EMAIL);
 
@@ -132,7 +212,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixEmailComValorChaveComMaisCaracteresQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createEmailRequest();
+        CreateChavePixRequest request = ChavePixFactory.createEmailRequest();
         request.setValorChave(TestConstants.EMAIL_COM_TAMANHO_MAIOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.EMAIL);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -152,7 +232,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveCriarChavePixCelularComoDadosValidos() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setTipoChave(TipoChave.CELULAR);
 
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
@@ -162,7 +242,7 @@ class CreateChavePixActionTest {
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(false);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(false);
 
             ChavePix chavePix = new ChavePix();
             chavePix.setValorChave(request.getValorChave());
@@ -179,14 +259,14 @@ class CreateChavePixActionTest {
 
             assertNotNull(chaveCriada.getId());
             assertEquals(request.getValorChave(), chaveCriada.getValorChave());
-            verify(repository, times(1)).existsByValorChave(request.getValorChave());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
             verify(repository, times(1)).save(any(ChavePix.class));
         }
     }
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCelularComValorChaveNulo() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(null);
         request.setTipoChave(TipoChave.CELULAR);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -204,7 +284,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCelularComValorChaveSemMaisNoInicio() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CELULAR_SEM_MAIS_NO_COMECO);
         request.setTipoChave(TipoChave.CELULAR);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -222,7 +302,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCelularComValorChaveMaiorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CELULAR_COM_TAMANHO_MAIOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.CELULAR);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -240,7 +320,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCelularComValorChaveAlfanumerico() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CELULAR_COM_ALFANUMERICO);
         request.setTipoChave(TipoChave.CELULAR);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -260,7 +340,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveCriarChavePixCPFComoDadosValidos() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCpfRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCpfRequest();
         request.setTipoChave(TipoChave.CPF);
 
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
@@ -270,7 +350,7 @@ class CreateChavePixActionTest {
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(false);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(false);
 
             ChavePix chavePix = new ChavePix();
             chavePix.setValorChave(request.getValorChave());
@@ -287,14 +367,14 @@ class CreateChavePixActionTest {
 
             assertNotNull(chaveCriada.getId());
             assertEquals(request.getValorChave(), chaveCriada.getValorChave());
-            verify(repository, times(1)).existsByValorChave(request.getValorChave());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
             verify(repository, times(1)).save(any(ChavePix.class));
         }
     }
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCPFComValorChaveNulo() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(null);
         request.setTipoChave(TipoChave.CPF);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -312,7 +392,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCPFComValorChaveAlfanumerico() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CPF_ALFANUMERICO);
         request.setTipoChave(TipoChave.CPF);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -330,7 +410,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCPFComValorChaveMaiorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CPF_COM_TAMANHO_MAIOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.CPF);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -348,7 +428,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCPFComValorChaveMenorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CPF_COM_TAMANHO_MENOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.CPF);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -366,7 +446,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCPFComValorChaveInvalido() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CPF_VALOR_INVALIDO);
         request.setTipoChave(TipoChave.CPF);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -386,7 +466,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveCriarChavePixCNPJComoDadosValidos() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCNPJRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCNPJRequest();
         request.setTipoChave(TipoChave.CNPJ);
 
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
@@ -396,7 +476,7 @@ class CreateChavePixActionTest {
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(false);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(false);
 
             ChavePix chavePix = new ChavePix();
             chavePix.setValorChave(request.getValorChave());
@@ -413,14 +493,14 @@ class CreateChavePixActionTest {
 
             assertNotNull(chaveCriada.getId());
             assertEquals(request.getValorChave(), chaveCriada.getValorChave());
-            verify(repository, times(1)).existsByValorChave(request.getValorChave());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
             verify(repository, times(1)).save(any(ChavePix.class));
         }
     }
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCNPJComValorChaveNulo() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(null);
         request.setTipoChave(TipoChave.CNPJ);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -438,7 +518,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCNPJComValorChaveAlfanumerico() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CNPJ_ALFANUMERICO);
         request.setTipoChave(TipoChave.CNPJ);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -456,7 +536,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCNPJComValorChaveMaiorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CNPJ_COM_TAMANHO_MAIOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.CNPJ);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -474,7 +554,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCNPJComValorChaveMenorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CNPJ_COM_TAMANHO_MENOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.CNPJ);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -492,7 +572,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixCNPJComValorChaveInvalido() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.CNPJ_INVALIDO);
         request.setTipoChave(TipoChave.CNPJ);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -511,7 +591,7 @@ class CreateChavePixActionTest {
     // ALEATORIO
     @Test
     void deveCriarChavePixAleatorioComoDadosValidos() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createAleatorioRequest();
+        CreateChavePixRequest request = ChavePixFactory.createAleatorioRequest();
         request.setTipoChave(TipoChave.ALEATORIA);
 
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
@@ -521,7 +601,7 @@ class CreateChavePixActionTest {
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(false);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(false);
 
             ChavePix chavePix = new ChavePix();
             chavePix.setValorChave(request.getValorChave());
@@ -538,14 +618,14 @@ class CreateChavePixActionTest {
 
             assertNotNull(chaveCriada.getId());
             assertEquals(request.getValorChave(), chaveCriada.getValorChave());
-            verify(repository, times(1)).existsByValorChave(request.getValorChave());
+            verify(readChavePixAction, times(1)).existsByValorChave(request.getValorChave());
             verify(repository, times(1)).save(any(ChavePix.class));
         }
     }
 
     @Test
     void deveLancarExcecaoAoCriarChavePixAleatorioComValorChaveNulo() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(null);
         request.setTipoChave(TipoChave.ALEATORIA);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -563,7 +643,7 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecaoAoCriarChavePixAleatorioComValorChaveMaiorQueOLimite() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createCelularRequest();
+        CreateChavePixRequest request = ChavePixFactory.createCelularRequest();
         request.setValorChave(TestConstants.ALEATORIA_MAIOR_QUE_O_LIMITE);
         request.setTipoChave(TipoChave.ALEATORIA);
         try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
@@ -581,17 +661,16 @@ class CreateChavePixActionTest {
 
     @Test
     void deveLancarExcecao_QuandoChaveJaExistir() {
-        CreateChavePixRequest request = ChavePixRequestFactory.createAleatorioRequest();
+        CreateChavePixRequest request = ChavePixFactory.createAleatorioRequest();
         request.setTipoChave(TipoChave.ALEATORIA);
 
-        try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class);
-             MockedStatic<ChavePixMapper> mapperMock = Mockito.mockStatic(ChavePixMapper.class)) {
+        try (MockedStatic<ChavePixValidatorFactory> validatorFactoryMock = Mockito.mockStatic(ChavePixValidatorFactory.class)) {
 
             validatorFactoryMock.when(() -> ChavePixValidatorFactory.getValidator(TipoChave.ALEATORIA))
                     .thenReturn(validator);
             doNothing().when(validator).validate(anyString());
 
-            when(repository.existsByValorChave(request.getValorChave())).thenReturn(true);
+            when(readChavePixAction.existsByValorChave(request.getValorChave())).thenReturn(true);
 
             BusinessException exception = assertThrows(
                     BusinessException.class,

@@ -2,13 +2,14 @@ package com.pix.chaves.rest.dto.request;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.domain.enums.TipoConta;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
+@Builder
 public class ChavePixFilter {
 
     @Nullable

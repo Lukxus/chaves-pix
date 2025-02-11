@@ -3,6 +3,7 @@ package com.pix.chaves.mapper;
 import com.pix.chaves.domain.model.ChavePix;
 import com.pix.chaves.rest.dto.request.CreateChavePixRequest;
 import com.pix.chaves.rest.dto.response.ChavePixResponse;
+import com.pix.chaves.rest.dto.response.ChavePixUpdateResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -35,7 +36,21 @@ public class ChavePixMapper {
                 .nomeCorrentista(safeString(chavePix.getNomeCorrentista()))
                 .sobrenomeCorrentista(safeString(chavePix.getSobrenomeCorrentista()))
                 .dataHoraInclusao(safeDate(chavePix.getDataHoraInclusao()))
-                .dataHoraExclusao(safeDate(chavePix.getDataHoraInativacao()))
+                .dataHoraInativacao(safeDate(chavePix.getDataHoraInativacao()))
+                .build();
+    }
+
+    public static ChavePixUpdateResponse toUpdateResponse(ChavePix chavePix) {
+        return ChavePixUpdateResponse.builder()
+                .id(chavePix.getId())
+                .tipoChave(chavePix.getTipoChave())
+                .valorChave(safeString(chavePix.getValorChave()))
+                .tipoConta(chavePix.getTipoConta())
+                .numeroAgencia(safeString(chavePix.getNumeroAgencia()))
+                .numeroConta(safeString(chavePix.getNumeroConta()))
+                .nomeCorrentista(safeString(chavePix.getNomeCorrentista()))
+                .sobrenomeCorrentista(safeString(chavePix.getSobrenomeCorrentista()))
+                .dataHoraInclusao(safeDate(chavePix.getDataHoraInclusao()))
                 .build();
     }
 

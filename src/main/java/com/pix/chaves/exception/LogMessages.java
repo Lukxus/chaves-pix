@@ -19,6 +19,8 @@ public class LogMessages {
     public static final String CHAVE_PIX_ENCONTRADA = "Chave PIX encontrada: ID {}";
 
     public static final String CONTANDO_CHAVES_POR_AGENCIA_CONTA = "Contando chaves pela agência {} e conta {}";
+    public static final String VERIFICANDO_SE_CHAVE_COM_MESMO_VALOR_JA_EXISTE = "Verificando se chave com o mesmo valor já existe.";
+    public static final String FIM_DA_VERIFICACAO_SE_CHAVE_COM_MESMO_VALOR_JA_EXISTE = "Fim da verificação se chave com o mesmo valor já existe.";
     public static final String TOTAL_CHAVES_POR_AGENCIA_CONTA ="Total de chaves encontradas: {}";
     public static final String CONSULTA_CONCLUIDA_TOTAL_CHAVES = "Consulta concluída. Total de chaves encontradas: {}";
 

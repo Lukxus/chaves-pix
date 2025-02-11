@@ -1,4 +1,4 @@
-package com.pix.chaves.services;
+package com.pix.chaves.unit.utils.validator;
 
 import com.pix.chaves.domain.enums.TipoChave;
 import com.pix.chaves.exception.ValidationException;

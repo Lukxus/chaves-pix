@@ -39,7 +39,7 @@ public class CreateChavePixAction {
         ChavePixValidator validator = ChavePixValidatorFactory.getValidator(request.getTipoChave());
         validator.validate(request.getValorChave());
 
-        if (chavePixRepository.existsByValorChave(request.getValorChave())) {
+        if (readChavePixAction.existsByValorChave(request.getValorChave())) {
             log.warn(LogMessages.CHAVE_PIX_JA_CADASTRADA, request.getValorChave());
             throw new BusinessException(ErrorMessages.CHAVE_PIX_JA_CADASTRADA);
         }

@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class ChavePixResponse {
+public class ChavePixUpdateResponse {
 
     private UUID id;
     private TipoChave tipoChave;
@@ -27,6 +26,5 @@ public class ChavePixResponse {
     private String nomeCorrentista;
     private String sobrenomeCorrentista;
     private String dataHoraInclusao;
-    private String dataHoraInativacao;
 
 }

@@ -44,10 +44,6 @@ public final class TestConstants {
     public static final String CELULAR_SEM_MAIS_NO_COMECO = "5511982258884";
     public static final String CELULAR_COM_TAMANHO_MAIOR_QUE_O_LIMITE = "55111111111111111111111982258884";
     public static final String CELULAR_COM_ALFANUMERICO = "a5511982258884";
-//    public static final String AGENCY_NUMBER_CPF = "0002";
-//    public static final String ACCOUNT_NUMBER_CPF = "654321";
-//    public static final String FIRST_NAME_CPF = "Beltrano";
-//    public static final String LAST_NAME_CPF = "de Tal";
 
     // Constantes para a requisição de CNPJ
     public static final String CNPJ = "16010624000120";

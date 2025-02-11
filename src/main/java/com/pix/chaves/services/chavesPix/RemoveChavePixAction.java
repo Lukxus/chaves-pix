@@ -35,7 +35,7 @@ public class RemoveChavePixAction {
         }
 
         chavePix.setDataHoraInativacao(LocalDateTime.now());
-        chavePix = repository.save(chavePix);
+        repository.save(chavePix);
         log.info(LogMessages.CHAVE_PIX_INATIVADA_COM_SUCESSO, id);
         return chavePix;
     }
